@@ -1,0 +1,100 @@
+\documentclass[12pt,twoside, openright]{report}
+\usepackage[a4paper, width=150mm, top=25mm, bottom=25mm, bindingoffset=1cm, headheight=2cm]{geometry}
+
+\usepackage{fancyhdr}
+\fancyhead[LE,RO]{\slshape \small \nouppercase{\rightmark}\/}
+\fancyhead[LO,RE]{\slshape \small \nouppercase{\leftmark}\/}
+
+% \usepackage[font=footnotesize, textfont=footnotesize, labelfont={footnotesize,bf}]{caption}
+\usepackage{amsmath}
+\usepackage{tabularx}
+% \usepackage{amsfonts}
+% \usepackage{amssymb}
+
+\usepackage{graphicx}
+\graphicspath{ {figures/} }
+
+\usepackage{color}
+\usepackage{titling}
+\author{Lily Montgomery}
+\title{Exploring the Effects of Environmental Factors on the Microbial Community Structure and Diversity in Aquatic Ecosystems}
+\newcommand{\studentnumber}{123456789}
+\renewcommand{\year}{2023}
+\newcommand{\monthname}{March}
+\newcommand{\degree}{Master}
+\newcommand{\type}{Science}
+\newcommand{\faculty}{Institute of Aquatic Latex}
+\newcommand{\university}{Hamburg University of Technology}
+\newcommand{\fstReviewer}{Prof.~Dr.-Ing.~Amara Singh}
+\newcommand{\sndReviewer}{Prof.~Dr.-Ing.~Mia Sharma}
+\newcommand{\supervisor}{Isabella Patel}
+
+\usepackage[pdfborderstyle={/S/U/W 0}]{hyperref}
+\hypersetup{
+  pdftitle={\thetitle},
+  pdfauthor={\theauthor},
+  pdfsubject={\degree{} thesis}
+}
+
+\usepackage{acronym}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage[outputdir=output]{minted}
+\usepackage[noabbrev]{cleveref}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage[font=smaller,labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{etoolbox}
+
+\usepackage[obeyFinal]{easy-todo}
+\usepackage{lipsum}
+
+\usepackage[style=ieee,backend=biber]{biblatex}
+\addbibresource{literature.bib}
+
+\newcommand{\clearemptydoublepage}{ \clearpage {\pagestyle{empty}\cleardoublepage} }
+
+\makeatletter
+\newif\if@in@acrolist
+\AtBeginEnvironment{acronym}{\@in@acrolisttrue}
+\newrobustcmd{\LU}[2]{\if@in@acrolist#1\else#2\fi}
+
+\newcommand{\ACF}[1]{{\@in@acrolisttrue\acf{#1}}}
+
+\begin{document}
+\pagestyle{empty}
+\pagenumbering{Roman}
+\pdfbookmark{Cover Page}{Cover Page}
+\input{chapters/00-titlepage}
+
+%\listoftodos{}
+\clearemptydoublepage{}
+
+\input{chapters/01-abstract}
+\clearemptydoublepage{}
+\input{chapters/02-declaration}
+\clearemptydoublepage{}
+\pdfbookmark{\contentsname}{\contentsname}
+\tableofcontents
+\clearemptydoublepage{}
+\pdfbookmark{Abbreviations}{Abbreviations}
+\input{chapters/03-acronym}
+\clearemptydoublepage{}
+
+\pagestyle{fancy}
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%% Acutal thesis content
+\input{chapters/10-introduction}
+\input{chapters/20-evaluation}
+\input{chapters/30-outlook}
+
+\appendix
+\chapter{Appendix}
+\input{chapters/99-appendix}
+
+\printbibliography{}
+\end{document}
